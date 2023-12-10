@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Timeline</title>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+
+    <!-- build:css https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css -->
+    <link title="timeline-styles" rel="stylesheet" href="./build/css/timeline.css">
+    <!-- endbuild -->
+    <!-- build:js https://cdn.knightlab.com/libs/timeline3/latest/js/timeline-min.js.js -->
+    <script src="./build/js/timeline-min.js"></script>
+    <!-- endbuild -->
+
+    <!-- Style-->
+    <style>
+        html, body {
+        height:100%;
+        padding: 0px;
+        margin: 0px;
+        }
+      </style>
+</head>
+
+<body>
+
+    <div id="timeline-embed">
+        <div id="timeline"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var embed = document.getElementById('timeline-embed');
+            embed.style.height = getComputedStyle(document.body).height;
+            window.timeline = new TL.Timeline('timeline-embed', 'data.json', {
+                hash_bookmark: false
+            });
+            window.addEventListener('resize', function () {
+                var embed = document.getElementById('timeline-embed');
+                embed.style.height = getComputedStyle(document.body).height;
+                timeline.updateDisplay();
+            })
+        });
+    </script>
+
+</body>
+
+</html>
